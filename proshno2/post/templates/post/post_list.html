@@ -1,0 +1,16 @@
+{% extends 'post/base.html' %}
+{% block title %} Proshno- Home {% endblock %}
+
+
+
+{% block content %}
+
+{% for post in post_qs %}
+    <a href="{{ post.get_absolute_url }}"> <h4> {{ post.position }} at {{ post.companyName }} </h4> </a>
+    <p> Published on <b> {{ post.publish }} </b> by <b> {{ post.author }} </b> </p>
+    <br>
+
+{% endfor %}
+
+{% endblock  %}
+

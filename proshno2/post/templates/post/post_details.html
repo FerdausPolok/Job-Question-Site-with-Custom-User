@@ -1,0 +1,77 @@
+{% extends 'post/base.html' %}
+{% block title %} Details {% endblock %}
+
+{#{% block more_link %}#}
+{#    <li class="nav-item">#}
+{#        <a class="nav-link" href="{% url 'post:post_update' post_obj.id %}">Update</a>#}
+{#      </li>#}
+
+{#{% endblock %}#}
+
+
+{% block content %}
+
+
+    <h5>Company name </h5>
+    <p> {{ post_obj.companyName }} </p>
+    <h5>Position </h5>
+    <p> {{ post_obj.position }} </p>
+    <h5>Interview Questions </h5>
+    <pre>{{ post_obj.body }}</pre>
+
+    <br>
+
+    <p> Published on <b> {{ post_obj.publish }} </b> by <b>  {{ post_obj.author }} </b></p>
+    <p> Created on <b> {{ post_obj.created }} </b></p>
+    <p> Modified on <b> {{ post_obj.modified }} </b></p>
+
+
+    {% if user == post_obj.author %}
+
+        <a href="{% url 'post:post_update' post_obj.id %}" class="btn btn-primary">Edit</a>
+        {#    <a href="{% url 'post:post_delete' post_obj.id %}" onclick="return confirm('Are you sure you want to delete this?')" class="btn btn-danger">Delete</a>#}
+
+        <a href="{% url 'post:post_delete' post_obj.id %}" class="btn btn-danger">Delete</a>
+
+        <br>
+        <br>
+
+    {% endif %}
+
+{#    change#}
+{#    change#}
+
+
+    {% if user.is_authenticated %}
+
+        {% load crispy_forms_tags %}
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.body | as_crispy_field }}
+{#            {{ form | crispy }}#}
+            <input type="submit" class="btn btn-primary" value="Comment">
+        </form>
+        <br>
+        <br>
+
+    {% endif %}
+
+
+    <h4>Comments...</h4>
+    <br>
+
+    {% for comment in post_comments %}
+
+
+        <h6> {{ comment.author }} - {{ comment.created }} {% if comment.created != comment.modified %}
+            modified {% endif %} </h6>
+        <p> {{ comment.body }} </p>
+        <br>
+
+
+    {% endfor %}
+
+
+
+{% endblock %}

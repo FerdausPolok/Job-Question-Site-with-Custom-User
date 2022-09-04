@@ -49,6 +49,10 @@ INSTALLED_APPS = [
 
     #local apps
     'accounts.apps.AccountsConfig',
+    'post.apps.PostConfig',
+
+    #third-party_apps
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -139,5 +143,6 @@ AUTH_USER_MODEL= 'accounts.CustomUser'
 
 LOGIN_URL = 'accounts:login'
 LOGOUT_REDIRECT_URL = 'accounts:login'
+LOGIN_REDIRECT_URL= 'post:post_list'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

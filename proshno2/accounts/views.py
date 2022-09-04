@@ -21,9 +21,9 @@ class UserCreateView(CreateView):
     template_name = 'accounts/signup.html'
 
 
-# class UserLoginView(SuccessMessageMixin, LoginView):
-#     model = User
-#     template_name = 'accounts/login.html'
+class UserLoginView(SuccessMessageMixin, LoginView):
+    model = User
+    template_name = 'accounts/user_login.html'
 #
 #     def get_success_url(self, *args, **kwargs):
 #         profile_obj = Profile.objects.get(user_id=self.request.user.id)
