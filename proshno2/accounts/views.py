@@ -25,6 +25,6 @@ class UserLoginView(SuccessMessageMixin, LoginView):
     model = User
     template_name = 'accounts/user_login.html'
 
-    # def get_success_url(self, *args, **kwargs):
-    #     profile_obj = Profile.objects.get(user_id=self.request.user.id)
-    #     return reverse_lazy('user_profile:profile_detail', kwargs={'pk': profile_obj.id})
+    def get_success_url(self, *args, **kwargs):
+        profile_obj = Profile.objects.get(user_id=self.request.user.id)
+        return reverse_lazy('user_profile:profile_detail', kwargs={'pk': profile_obj.id})

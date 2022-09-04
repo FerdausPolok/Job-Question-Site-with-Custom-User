@@ -147,7 +147,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostCreateUpdateForm
     template_name = "post/post_create_or_update.html"
-    success_url = reverse_lazy("post:post_list")
+    success_url = reverse_lazy("post:post_details")
 
     def form_valid(self, form): #login user is the post creator? | yes? can edit and get auto author no? 403 Forbidden
         form.instance.author = self.request.user
