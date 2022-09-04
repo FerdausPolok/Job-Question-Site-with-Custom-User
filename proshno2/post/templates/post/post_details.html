@@ -38,8 +38,8 @@
 
     {% endif %}
 
-{#    change#}
-{#    change#}
+    {#    change#}
+    {#    change#}
 
 
     {% if user.is_authenticated %}
@@ -49,7 +49,7 @@
         <form method="POST">
             {% csrf_token %}
             {{ form.body | as_crispy_field }}
-{#            {{ form | crispy }}#}
+            {#            {{ form | crispy }}#}
             <input type="submit" class="btn btn-primary" value="Comment">
         </form>
         <br>
