@@ -4,8 +4,8 @@
 {% block content %}
     <div class="row border-bottom mb-2" >
         <div class="col-sm-9">
-            <h1>{{ user.username }}</h1>
-            <p>{{ profile.current_position }} at {{ profile.current_company }}</p>
+            <h2>{{ user.first_name }} {{user.last_name }}</h2>
+            <h6>{{ profile.current_position }} at {{ profile.current_company }}</h6>
             <p>Phone: {{ profile.phone }}</p>
             <p>Address: {{ profile.address }}</p>
             <a class="btn btn-primary mb-2" href="{% url 'user_profile:profile_update' profile.id %}" role="button">Update
@@ -14,7 +14,7 @@
 
 
         <div class="col-sm-2">
-            <img src="{{ profile.image.url }}" class="rounded-circle rounded float-right" alt="profile_picture">
+            <img src="{{ profile.image.url }}" class="rounded-circle" alt="profile_picture">
         </div>
         <div class="col-sm-1"></div>
     </div>
@@ -32,7 +32,7 @@
                 <tbody>
                 {% for post in post_queryset %}
                     <tr>
-                        <td><a href="{% url 'blog:post_detail' post.id %}">{{ post.position }}
+                        <td><a href="{% url 'post:post_details' post.id %}">{{ post.position }}
                             at {{ post.companyName }}</a></td>
                         <td>{{ post.companyName |truncatechars:40|safe }}</td>
                         <td>{{ post.status }}</td>

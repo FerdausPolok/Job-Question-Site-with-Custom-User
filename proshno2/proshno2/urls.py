@@ -3,7 +3,9 @@ from django.urls import path, include
 from post import urls as post_urls
 from django.contrib.auth import urls as auth_urls
 from accounts import urls as my_user_urls
+from django.conf import settings
 from user_profile import urls as user_profile_urls
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,3 +16,6 @@ urlpatterns = [
 
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
